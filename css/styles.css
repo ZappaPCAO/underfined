@@ -1,0 +1,192 @@
+@charset "UTF-8";
+/*declaracion de variables*/
+/*declaracion de mixims*/
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none !important;
+}
+
+body {
+  background-color: #fff !important;
+}
+
+.logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  border: none;
+}
+
+.subtitulo {
+  font-size: large;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+.title {
+  text-transform: uppercase;
+  margin-left: 1.5rem;
+  margin-bottom: 0 !important;
+  font-family: upperase large, "Plus Jakarta Sans", sans-serif;
+  color: #1AAE9F;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.b-degrade {
+  height: 0.2rem;
+  background: rgb(189, 189, 189);
+  background: linear-gradient(90deg, #fff 0%, rgb(150, 126, 197) 0%, #6558F5 48%, #1AAE9F 100%);
+  background-size: 300% 100%;
+  animation: gradient 5s ease infinite;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 0.1rem transparent;
+}
+.menu .navbar-toggler {
+  border: none !important;
+}
+.menu .menu-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+  height: default !important;
+}
+.menu .menu-logo img {
+  width: 3rem !important;
+  height: 3rem !important;
+}
+.menu .menu-logo .line {
+  width: 100% !important;
+  height: 0.25rem !important;
+  margin: 0 3%;
+  background-color: #1AAE9F;
+}
+.menu .cvu-icon {
+  display: flex;
+  color: #6558F5;
+  margin-right: 1.5rem;
+  font-size: x-large;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  transition: color 0.25s !important;
+}
+.menu .cvu-icon .bi {
+  margin-right: 0.5rem !important;
+}
+.menu .cvu-icon.active {
+  color: #1AAE9F !important;
+}
+.menu .cvu-icon:hover {
+  color: #6558F5 !important;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: #fff;
+  padding: 0.5rem;
+  border-top: 0.2rem solid transparent;
+  border-image-slice: 1;
+  margin: 0rem 1rem;
+  align-items: center;
+}
+.footer .footer-redes {
+  justify-self: end;
+}
+.footer .footer-redes a {
+  font-size: x-large;
+  color: #fff;
+  padding: 0.5rem;
+  transition: filter 0.25s linear;
+}
+.footer .footer-redes a:hover {
+  filter: brightness(75%);
+}
+.footer .footer-logo {
+  justify-self: center;
+}
+.footer .footer-logo img {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border-radius: 0.75rem;
+}
+.footer .footer-copy p::before {
+  content: "© 2023 Cineapolis, Tomás Zappalá \aPágina sin fines de lucro ni comerciales";
+  white-space: pre;
+}
+@media screen and (max-width: 768px) {
+  .footer {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .footer .footer-logo {
+    justify-self: center;
+    margin-top: 1rem;
+  }
+  .footer .footer-copy {
+    justify-self: center;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .footer .footer-copy p::before {
+    content: "© 2023 Cineapolis, Tomás Zappalá";
+  }
+  .footer .footer-redes {
+    justify-self: center;
+    margin-top: 1rem;
+  }
+  .footer .footer-redes a {
+    padding: 0 1.235rem;
+  }
+}
+
+.balance-container {
+  border: 0.25rem #1AAE9F solid !important;
+  margin-top: 1.5rem !important;
+}
+.balance-container .balance .balance-tittle {
+  font-size: xx-large;
+}
+.balance-container .balance .balance-saldo {
+  font-size: 3.5rem !important;
+}
+.balance-container .balance .btn-eye .bi-eye-slash-fill {
+  font-size: xx-large !important;
+  color: #6558F5 !important;
+}
+.balance-container .balance .btn-convert {
+  border: 0.1rem #6558F5 solid !important;
+}
+.balance-container .line {
+  width: 90% !important;
+  height: 0.2rem !important;
+  margin: 0 0.1rem 0 0.5rem !important;
+  background-color: #1AAE9F;
+}
+.balance-container .bi {
+  width: 2.5% !important;
+  height: auto !important;
+  margin: 0 2rem 0 0 !important;
+  color: #1AAE9F;
+  padding: 0 !important;
+}
+
+/*# sourceMappingURL=styles.css.map */

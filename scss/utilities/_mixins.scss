@@ -1,0 +1,5 @@
+/*declaracion de mixims*/
+@mixin sizes ($height, $width) {
+    width: $width !important;
+    height: $height !important;
+}

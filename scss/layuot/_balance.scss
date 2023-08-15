@@ -1,0 +1,33 @@
+.balance-container{
+    border: 0.25rem $primaryColor solid !important;
+    margin-top: 1.5rem !important;
+
+    .balance{
+        .balance-tittle{
+            font-size: xx-large;
+        }
+        .balance-saldo{        
+            font-size: 3.5rem !important;           
+        }
+        .btn-eye{
+            .bi-eye-slash-fill{
+                font-size: xx-large !important;
+                color: $seccondaryColor !important;
+            }
+        }
+        .btn-convert{
+            border: 0.1rem $seccondaryColor solid !important;
+        }
+    }
+    .line{
+        @include sizes(0.20rem, 90%);
+        margin: 0 0.1rem 0 0.5rem !important;
+        background-color: $primaryColor; 
+    }
+    .bi{
+        @include sizes(auto, 2.5%);
+        margin: 0 2rem 0 0!important;
+        color: $primaryColor;
+        padding: 0 !important;
+    }
+}
