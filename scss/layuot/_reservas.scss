@@ -1,0 +1,19 @@
+.reservas-container {
+  border: 0.25rem $primaryColor solid !important;
+  margin-top: 1.5rem !important;
+
+  .reservas-tittle {
+    display: inline-block !important;
+    font-size: large !important;
+  }
+  .reservas-saldo {
+    margin-left: 3rem !important;
+    font-size: medium !important;
+  }
+
+  .bi {
+    @include sizes(auto, 2%);
+    margin: 0 2rem 0 0 !important;
+    color: $primaryColor;
+  }
+}

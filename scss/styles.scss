@@ -6,9 +6,10 @@
 @import "./base/reset", "./base/fonts", "./base/body";
 
 //Components
-@import "./components/logo", "./components/subtitle",
-  "./components/title", "./components/border-degrade";
+@import "./components/logo", "./components/subtitle", "./components/title",
+  "./components/border-degrade";
 
 //Layout
-@import "./layuot/menu",  "./layuot/footer", "./layuot/balance";
-
+@import "./layuot/menu", "./layuot/footer", "./layuot/balance",
+  "./layuot/prestamos", "./layuot/reservas", "./layuot/historial",
+  "./layuot/ventanaFlot", "./layuot/acciones";

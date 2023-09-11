@@ -6,7 +6,7 @@
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1) !important;
   border-bottom: 0.1rem transparent;
 
-  .navbar-toggler{
+  .navbar-toggler {
     border: none !important;
   }
 
@@ -15,26 +15,26 @@
     justify-content: center;
     align-items: center;
     @include sizes(default, 100%);
-    
-    img{
-        @include sizes(3rem, 3rem);
-      }
-      .line{
-        @include sizes(0.25rem, 100%);
-        margin: 0 3%;
-        background-color: #1AAE9F; 
+
+    img {
+      @include sizes(3rem, 3rem);
+    }
+    .line {
+      @include sizes(0.25rem, 100%);
+      margin: 0 3%;
+      background-color: #1aae9f;
     }
   }
   .cvu-icon {
     display: flex;
-  
-    color: #6558F5;
+
+    color: #6558f5;
     margin-right: 1.5rem;
     font-size: x-large;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     transition: color 0.25s !important;
 
-    .bi{
+    .bi {
       margin-right: 0.5rem !important;
     }
 
@@ -42,7 +42,7 @@
       color: $primaryColor !important;
     }
     &:hover {
-      color: $seccondaryColor !important;
+      color: $primaryColor !important;
     }
   }
 }
