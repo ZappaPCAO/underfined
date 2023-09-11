@@ -1,28 +1,47 @@
+function chequearCarritoEnStorage() {
+  let contenidoEnStorage = JSON.parse(localStorage.getItem("carritoEnStorage"));
+  let array = [];
+
+  if (contenidoEnStorage) {
+      for (const objeto of contenidoEnStorage) {
+          let cripto = new Cripto(objeto, objeto.cantidad);
+          cripto.actualizarPrecioTotal();
+          array.push(cripto);
+      }
+      imprimirTabla(array);
+  }
+  return array;
+}
+
+const carrito = chequearCarritoEnStorage();
+
+this.imprimirProductosEnHTML(criptos)
+
 const cvuVector = []; //Para obtener un cvu random
 for (let i = 0; i < 10; i++) {
-  const cvu = Math.floor(Math.random() * 10000000000000000).toString();
-  cvuVector.push(cvu);
+    const cvu = Math.floor(Math.random() * 10000000000000000).toString();
+    cvuVector.push(cvu);
 }
 
 function copiarAlPortapapeles(id_elemento) {
   // Crea un campo de texto "oculto", este por un textarea
-  var aux = document.createElement("textarea");
+var aux = document.createElement("textarea");
 
   // Asigna el contenido del elemento especificado al valor del campo
   // este para vaciar el contenido
-  aux.innerHTML = document.getElementById(id_elemento).innerHTML;
+aux.innerHTML = document.getElementById(id_elemento).innerHTML;
 
   // Añade el campo a la página
-  document.body.appendChild(aux);
+document.body.appendChild(aux);
 
   // Selecciona el contenido del campo
-  aux.select();
+aux.select();
 
   // Copia el texto seleccionado
-  document.execCommand("copy");
+document.execCommand("copy");
 
   // Elimina el campo de la página
-  document.body.removeChild(aux);
+document.body.removeChild(aux);
 }
 
 function mostrarNotificacion() {
@@ -32,6 +51,14 @@ function mostrarNotificacion() {
   document.getElementById(
     "copiarCVU"
   ).innerHTML = `<i class="bi bi-clipboard-check"></i>`;
+
+  setTimeout(() => {
+    notificacion.style.display = "none";
+  }, 2000); // La notificación se ocultará después de 5 segundos
+}
+function mostrarNotificacionCart() {
+  const notificacion = document.getElementById("agregadoNotificacion");
+  notificacion.style.display = "block";
 
   setTimeout(() => {
     notificacion.style.display = "none";
@@ -193,3 +220,143 @@ function convertirMonto() {
       console.error("Error al obtener el tipo de cambio:", error);
     });
 }
+
+
+/*************************************************************************************/
+
+function imprimirProductosEnHTML(criptos) {
+  // Obtenemos el div que contendrá nuestras cards
+  let contenedor = document.getElementById("listado-criptos");
+  /*contenedor.innerHTML = "";*/
+
+  for (const cripto of criptos) {   
+    let card = document.createElement("div",)
+
+    card.classList.add(('card', 'col-lg-3'))
+  
+    card.style.width = "18rem"
+
+    card.innerHTML = `
+      <img src="../img${cripto.img}" class="card-img-top" alt="img cripto item ${cripto.id}">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          <b>Nombre: </b><i>${cripto.nombre}</i>
+          <b>Valor: </b><p>${cripto.precio}</p>
+          <b>Cantidad: </b><p>${cripto.cantidad}</p>
+        </p>
+        <button id="comprar${cripto.id}" type="button" class="btn btn-dark"> Comprar </button>
+      </div>`;
+
+    contenedor.appendChild(card)
+  
+    let boton = document.getElementById(`comprar${cripto.id}`);
+    boton.addEventListener("click", () => agregarAlCarrito(cripto.id));
+  }
+}
+
+/*****************************************************************************/
+function agregarAlCarrito(idCripto) {
+  let criptoEnCarrito = carrito.find((cripto) => cripto.id === idCripto);
+
+  if (criptoEnCarrito) {
+      let index = carrito.findIndex((elemento) => elemento.id === criptoEnCarrito.id);
+
+      carrito[index].agregarUnidad();
+      carrito[index].actualizarPrecioTotal();
+  } else {
+      let cantidad = 1;
+      carrito.push(new Cripto(criptos[idCripto], cantidad));
+  }
+
+  mostrarNotificacionCart();
+
+  // Actualizamos el storage y el contenido de la tabla
+  localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
+  imprimirTabla(carrito);
+}
+
+function eliminarDelCarrito(idCripto) {
+  let cripto = carrito.find((cripto) => cripto.id === idCripto);
+
+  let index = carrito.findIndex((element) => element.id === cripto.id);
+
+  if (cripto.cantidad > 1) {
+      carrito[index].quitarUnidad();
+      carrito[index].actualizarPrecioTotal();
+  } else {
+      carrito.splice(index, 1);
+  }
+
+  swal("Producto eliminado con éxito", "", "success");
+
+  localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
+  imprimirTabla(carrito);
+}
+
+function eliminarCarrito() {
+  carrito.length = 0;
+  localStorage.removeItem("carritoEnStorage");
+
+  document.getElementById("carrito").innerHTML = "";
+  document.getElementById("acciones-carrito").innerHTML = "";
+}
+
+function obtenerPrecioTotal(array) {
+  return array.reduce((total, elemento) => total + elemento.precioTotal, 0);
+}
+
+
+function imprimirTabla(array) {
+  let precioTotal = obtenerPrecioTotal(array);
+  let contenedor = document.getElementById("carrito");
+  contenedor.innerHTML = "";
+
+  // Creamos el div que contendrá la tabla
+  let tabla = document.createElement("div");
+
+  // A ese div le agregaremos todos los datos de la tabla
+  tabla.innerHTML = `
+      <table id="tablaCarrito" class="table table-striped">
+          <thead>         
+              <tr>
+                  <th>Cripto</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th>Accion</th>
+              </tr>
+          </thead>
+
+          <tbody id="bodyTabla">
+          </tbody>
+      </table>
+  `;
+
+  contenedor.appendChild(tabla);
+
+  // Una vez que dibujamos la tabla, obtenemos el id del body de la tabla
+  // donde imprimiremos los datos del array
+  let bodyTabla = document.getElementById("bodyTabla");
+
+  for (let cripto of array) {
+      let datos = document.createElement("tr");
+      datos.innerHTML = `
+              <td>${cripto.nombre}</td>
+              <td>${cripto.cantidad}</td>
+              <td>$${cripto.precioTotal}</td>
+              <td><button title="Eliminar" id="eliminar${cripto.id}" class="btn btn-dark"><i class="bi bi-trash3-fill"></i></button></td>
+    `;
+
+      bodyTabla.appendChild(datos);
+
+      let botonEliminar = document.getElementById(`eliminar${cripto.id}`);
+      botonEliminar.addEventListener("click", () => eliminarDelCarrito(cripto.id));
+  }
+
+  let accionesCarrito = document.getElementById("acciones-carrito");
+  accionesCarrito.innerHTML = `
+  <h5>PrecioTotal: $${precioTotal}</h5></br>
+  <button id="vaciarCarrito" onclick="eliminarCarrito()" class="btn btn-dark">Vaciar Carrito</button>
+`;
+}
+
