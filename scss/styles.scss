@@ -1,13 +1,14 @@
 //Utilities
 @import "./utilities/variables", "./utilities/mixins",
-  "./utilities/media-queris";
+  "./utilities/media-queris", "./utilities/bg-degrade";
 
 //Base
 @import "./base/reset", "./base/fonts", "./base/body";
 
 //Components
 @import "./components/logo", "./components/subtitle", "./components/title",
-  "./components/border-degrade";
+  "./components/border-degrade", "./components/fondo",
+  "./components/notificacion";
 
 //Layout
 @import "./layuot/menu", "./layuot/footer", "./layuot/balance",

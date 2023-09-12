@@ -1,33 +1,45 @@
-.balance-container{
-    border: 0.25rem $primaryColor solid !important;
-    margin-top: 1.5rem !important;
+.balance-container {
+  border: 0.25rem $primaryColor solid !important;
+  margin-top: 1.5rem !important;
 
-    .balance{
-        .balance-tittle{
-            font-size: xx-large;
-        }
-        .balance-saldo{        
-            font-size: 3.5rem !important;           
-        }
-        .btn-eye{
-            .bi-eye-slash-fill{
-                font-size: xx-large !important;
-                color: $seccondaryColor !important;
-            }
-        }
-        .btn-convert{
-            border: 0.1rem $seccondaryColor solid !important;
-        }
+  .balance {
+    .balance-tittle {
+      font-size: xx-large;
     }
-    .line{
-        @include sizes(0.20rem, 90%);
-        margin: 0 0.1rem 0 0.5rem !important;
-        background-color: $primaryColor; 
+    .balance-saldo {
+      font-size: 3.5rem !important;
     }
-    .bi{
-        @include sizes(auto, 2.5%);
-        margin: 0 2rem 0 0!important;
-        color: $primaryColor;
-        padding: 0 !important;
+    .signo-monetario {
+      padding: 0 1rem;
     }
+    .btn-eye {
+      color: $seccondaryColor;
+      font-size: x-large;
+    }
+    .btn-convert {
+      border: 0.1rem $seccondaryColor solid !important;
+      transition: all 0.4s ease-in step-end;
+
+      &:hover {
+        .convert-icon {
+          color: #fff !important;
+        }
+        border-color: $primaryColor !important;
+        background-color: $seccondaryColor !important;
+        color: #fff !important;
+      }
+    }
+  }
+  .line {
+    @include sizes(0.2rem, 90%);
+    margin: 0 0.1rem 0 0.5rem !important;
+    background-color: $primaryColor;
+  }
+  .convert-icon,
+  .row-icon {
+    @include sizes(auto, 2.5%);
+    margin: 0 2rem 0 0 !important;
+    color: $primaryColor;
+    padding: 0 !important;
+  }
 }

@@ -1,0 +1,39 @@
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.bg-degrade {
+  height: 0.2rem;
+  background: rgb(189, 189, 189);
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    rgb(85, 0, 255) 0%,
+    $primaryColor 48%,
+    $seccondaryColor 100%
+  );
+  background-size: 300% 100%;
+  animation: gradient 5s ease infinite;
+}
+
+.bg-degrade-iz {
+  height: 0.2rem;
+  background: rgb(189, 189, 189);
+  background: linear-gradient(
+    90deg,
+    #fff 0%,
+    rgb(85, 0, 255) 0%,
+    $seccondaryColor 48%,
+    $primaryColor 100%
+  );
+  background-size: 300% 100%;
+  animation: gradient 5s ease infinite;
+}

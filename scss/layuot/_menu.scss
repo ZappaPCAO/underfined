@@ -2,12 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1) !important;
   border-bottom: 0.1rem transparent;
 
   .navbar-toggler {
     border: none !important;
+  }
+
+  .underfined-tit {
+    width: 18rem;
   }
 
   .menu-logo {
@@ -19,17 +22,22 @@
     img {
       @include sizes(3rem, 3rem);
     }
-    .line {
+    .line-iz {
+      @include sizes(0.25rem, 79%);
+      margin: 0 3%;
+      background-color: #1aae9f;
+    }
+    .line-de {
       @include sizes(0.25rem, 100%);
       margin: 0 3%;
       background-color: #1aae9f;
     }
   }
-  .cvu-icon {
+  .cvu-icon,
+  .carrito-icon {
     display: flex;
-
+    background-color: #fff;
     color: #6558f5;
-    margin-right: 1.5rem;
     font-size: x-large;
     font-family: "Plus Jakarta Sans", sans-serif;
     transition: color 0.25s !important;
@@ -44,5 +52,17 @@
     &:hover {
       color: $primaryColor !important;
     }
+  }
+
+  .carrito-icon {
+    border: none;
+    margin-right: 1.5rem;
+  }
+  .divisor-vertical {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0;
+    background-color: $primaryColor;
+    @include sizes(3rem, 0.3rem);
   }
 }

@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Underfined | Billetera Virtual</title>
-    <link rel="icon" href="./img/logo2.png" />
+    <link rel="icon" href="./img/icono/underfined.png" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="./scss/styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
 
     <!--BOOSTRAP-->
     <link
@@ -42,7 +42,7 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <p>Aca iria el listado de opiones del menu.</p>
+          <p>Aca iria el listado de opciones del menu.</p>
         </div>
       </div>
       <nav class="navbar bg-white text-dark">
@@ -58,24 +58,40 @@
           </button>
         </div>
       </nav>
-      <h1 class="menu-title title">underfined</h1>
+      <a href="#">
+        <img
+          class="underfined-tit"
+          src="./img/underfined.png"
+          alt="underfined"
+        />
+      </a>
       <div class="menu-logo">
-        <div class="line"></div>
-        <a href="http://"><img src="/img/logo2.png" alt="logo underfined" /></a>
-        <div class="line"></div>
+        <div class="line-iz bg-degrade-iz"></div>
+        <a href="#"><img src="./img/logo2.png" alt="logo underfined" /></a>
+        <div class="line-de bg-degrade"></div>
       </div>
-
       <a class="cvu-icon btn" id="refCVU" title="ver CVU">
         <i class="bi bi-person-bounding-box"></i>
         <b>CVU</b>
       </a>
+      <div class="divisor-vertical"></div>
+      <button
+        title="Ver carrito"
+        class="carrito-icon"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+      >
+        <i class="bi bi-cart-fill"></i>
+      </button>
     </header>
     <div class="fondo" id="fondo"></div>
     <div class="ventana-flotante" id="ventanaFlotante">
-      <h3 class="title">Información de cuenta</h3>
+      <h3 class="title">Inormacion de la cuenta</h3>
       <p class="cvu">CVU: <span id="cvu"></span></p>
       <p class="alias">Alias: <span id="alias"></span></p>
-      <p class="cuil">Número de CUIL: <span id="cuil"></span></p>
+      <p class="cuil">CUIL: <span id="cuil"></span></p>
       <button class="copiar-cvu" title="Copiar CVU" id="copiarCVU">
         <i class="bi bi-clipboard"></i>
       </button>
@@ -86,25 +102,57 @@
         <i class="bi bi-x-lg"></i>
       </button>
     </div>
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">
+          Carrito Underfined
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body" id="carrito"></div>
+      <div id="acciones-carrito"></div>
+    </div>
     <main class="container balance-container p-2 mx-auto">
       <div class="row balance justify-content-between align-items-center">
-        <h2 class="balance-tittle col-lg-1">Saldo</h2>
-        <div class="col-lg-3">
-          <b class="signo-monetario balance-saldo" id="signo-monetario">$</b>
-          <b id="saldo" class="balance-saldo">99.999,99</b>
+        <h2 class="balance-tittle col-lg-1 align-self-start">Saldo</h2>
+        <div class="col-lg-6 mx-auto p-0">
+          <div class="d-inline-flex">
+            <b class="signo-monetario balance-saldo" id="signo-monetario">$</b>
+            <b id="saldo" class="balance-saldo mx-auto">999.999,99</b>
+            <button
+              class="btn btn-eye col-lg-2 align-self-start"
+              id="btnOcultar"
+              title="ir a Modo oculto"
+            >
+              <i class="bi bi-eye-slash-fill"></i>
+            </button>
+          </div>
         </div>
-        <button class="btn btn-eye p-0 col-lg-1" id="btnOcultar">👁️</button>
         <div
-          class="balance-convert col-lg-7 d-flex justify-content-end align-self-start p-auto mx-auto"
+          class="balance-convert col-lg-5 d-flex justify-content-end align-self-start p-auto mx-auto"
         >
-          <button class="btn btn-convert" onclick="convertirMonto()">
-            <i class="bi bi-arrow-left-right"></i><b>U$D</b>
+          <button
+            class="btn btn-convert"
+            onclick="convertirMonto()"
+            title="convertir"
+          >
+            <i class="convert-icon bi bi-arrow-left-right"></i><b>U$D</b>
           </button>
         </div>
       </div>
       <div class="row separador justify-content-between align-items-center">
         <div class="line col-lg-10"></div>
-        <i class="bi bi-caret-right-fill col-lg-2"></i>
+        <i class="row-icon bi bi-caret-right-fill col-lg-2"></i>
       </div>
       <div class="row ganancia justify-content-between align-items-center">
         <p class="ganancia-cant col-lg-4">***</p>
@@ -114,15 +162,25 @@
     </main>
     <section class="container acciones-container p-2">
       <div class="acciones row justify-content-center align-items-center">
-        <div class="col-lg-6 d-flex justify-content-end">
-          <button class="btn-acciones">
+        <div class="col-lg-5 d-flex justify-content-end">
+          <button class="btn-acciones" title="Transferir">
             <img
               src="./img/Icono/transferir-dinero.png"
               alt="realizar transferencia icono"
             />
           </button>
         </div>
-        <div class="col-lg-6 d-flex justify-content-start">
+        <div class="col-lg-2 d-flex justify-content-center">
+          <button class="btn-acciones" title="Comprar criptos">
+            <a href="./pages/listadoCriptos.html">
+              <img
+                src="./img/Icono/criptomoneda.png"
+                alt="Comprar criptomonedas"
+              />
+            </a>
+          </button>
+        </div>
+        <div class="col-lg-5 d-flex justify-content-start">
           <button
             class="btn-acciones"
             onclick="ingresarDinero()"
@@ -193,6 +251,10 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/balances.js"></script>
+    <script src="../js/entidades/cripto.js"></script>
+    <script src="../js/componentes/carrito.js"></script>
+    <script src="../js/index.js"></script>
+    <!-- Sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>
