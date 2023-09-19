@@ -163,7 +163,7 @@ function convertirMonto() {
 
 function imprimirProductosEnHTML(criptos) {
   let contenedor = document.getElementById("listado-criptos");
-  contenedor.innerHTML = ``;
+  contenedor.innerHTML = "";
 
   for (const cripto of criptos) {
     let card = document.createElement("div");

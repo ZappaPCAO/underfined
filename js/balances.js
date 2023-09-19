@@ -56,7 +56,7 @@ btnOcultar.addEventListener("click", () => {
 
 refCVU.addEventListener("click", () => {
   const indice = Math.floor(Math.random() * 10);
-
+  console.log("oa")
   document.getElementById("cvu").innerText = cvuVector[indice].toString();
   document.getElementById("alias").innerText = "BARCO.ALPARGATA.PEZ";
   document.getElementById("cuil").inertText = "11-11111111-1";
