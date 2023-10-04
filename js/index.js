@@ -1,27 +1,22 @@
-const cvuVector = []; //Para obtener un cvu random
-for (let i = 0; i < 10; i++) {
-  const cvu = Math.floor(Math.random() * 10000000000000000).toString();
-  cvuVector.push(cvu);
+function chequearUserEnStorage() {
+  let object = JSON.parse(localStorage.getItem("usuario"));
+  let user = new Usuario(object);
+
+  return user;
+}
+
+function refreshValues() {
+  const saldo = document.getElementById("saldo");
+
+  saldo.innerText = formatoArgentinoMonetario(usuarioLogg.monto);
 }
 
 function copiarAlPortapapeles(id_elemento) {
-  // Crea un campo de texto "oculto", este por un textarea
   var aux = document.createElement("textarea");
-
-  // Asigna el contenido del elemento especificado al valor del campo
-  // este para vaciar el contenido
   aux.innerHTML = document.getElementById(id_elemento).innerHTML;
-
-  // Añade el campo a la página
   document.body.appendChild(aux);
-
-  // Selecciona el contenido del campo
   aux.select();
-
-  // Copia el texto seleccionado
   document.execCommand("copy");
-
-  // Elimina el campo de la página
   document.body.removeChild(aux);
 }
 
@@ -48,18 +43,14 @@ function mostrarNotificacionCart() {
 }
 
 function formatoArgentinoMonetario(cadena) {
-  // Reemplaza la coma con el punto (para separador decimal)
-  cadena = cadena.replace(",", ".");
+  cadena = cadena.toString().replace(",", ".");
 
-  // Convierte la cadena a un número con formato inglés
   const numero = parseFloat(cadena);
 
-  // Verifica si el número es un valor numérico válido
   if (isNaN(numero)) {
-    return "Formato inválido";
+    return "formato invalido";
   }
 
-  // Formatea el número en formato argentino
   const formatoArgentino = numero.toLocaleString("es-AR", {
     currency: "ARS",
     minimumFractionDigits: 3,
@@ -87,50 +78,6 @@ function realizarTransferencia() {
   cadenaAux = saldoNew.toString().replace(".", ",");
 
   saldoAct.textContent = setNuevoMonto(cadenaAux);
-}
-
-function ingresarDinero() {
-  prompt(`Ingrese el CVU desde el cual quiere ingresar dinero: `);
-  //verificar cvu proxima entregas...
-  let valorAIngresar = prompt(`Ingrese la cantidad a ingresar: `);
-  //ver la forma de verificar el monto en futuraws entregas...
-
-  while (isNaN(valorAIngresar)) {
-    valorAIngresar = prompt(`Ingrese una cantidad valida: `);
-  }
-
-  const saldoAct = document.getElementById("saldo");
-  let cadenaAux = saldoAct.textContent.replace(".", ""); //esto lo hago para respetar el formato moneda en la vista.
-  let saldoNew = parseFloat(cadenaAux.replace(",", "."));
-
-  saldoNew = (saldoNew + parseFloat(valorAIngresar)).toFixed(2);
-
-  cadenaAux = saldoNew.toString().replace(".", ",");
-
-  saldoAct.innerText = setNuevoMonto(cadenaAux);
-}
-
-function setNuevoMonto(cadenaAux) {
-  let cont = 0,
-    j = 0;
-  let cadenaFinal = [""];
-  for (let i = cadenaAux.length - 4; i >= 0; i--) {
-    cont++;
-    cadenaFinal[j] = cadenaAux[i];
-
-    if (cont == 3 && i - 1 >= 0) {
-      cont = 0;
-      j++;
-      cadenaFinal[j] = ".";
-    }
-    j++;
-  }
-  cadenaFinal = cadenaFinal.reverse();
-  for (let i = cadenaAux.length - 3; i < cadenaAux.length; i++) {
-    cadenaFinal[j] = cadenaAux[i];
-    j++;
-  }
-  return cadenaFinal.join("");
 }
 
 function convertirMonto() {
@@ -161,89 +108,50 @@ function convertirMonto() {
     });
 }
 
-function imprimirProductosEnHTML(criptos) {
-  let contenedor = document.getElementById("listado-criptos");
-  contenedor.innerHTML = "";
+btnOcultar.addEventListener("click", () => {
+  const saldoElement = document.getElementById("saldo");
+  const toggleButton = document.getElementById("btnOcultar");
 
-  for (const cripto of criptos) {
-    let card = document.createElement("div");
-
-    card.classList.add(("card", "col-lg-3"));
-
-    card.style.width = "18rem";
-
-    card.innerHTML = `
-      <img src="../img${cripto.img}" class="card-img-top" alt="img cripto item ${cripto.id}">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          <b>Nombre: </b><i>${cripto.nombre}</i>
-          <b>Valor: </b><p>${cripto.precio}</p>
-          <b>Cantidad: </b><p>${cripto.cantidad}</p>
-        </p>
-        <button id="comprar${cripto.id}" type="button" class="btn btn-dark"> Comprar </button>
-      </div>`;
-
-    contenedor.appendChild(card);
-
-    let boton = document.getElementById(`comprar${cripto.id}`);
-    boton.addEventListener("click", () => agregarAlCarrito(cripto.id));
+  if (
+    saldoElement.style.visibility === "visible" ||
+    saldoElement.style.visibility === ""
+  ) {
+    saldoElement.style.visibility = "hidden";
+    toggleButton.innerHTML = `<i class="bi bi-eye-fill"></i>`;
+    toggleButton.setAttribute("title", "ir a Modo clasico");
+  } else {
+    saldoElement.style.visibility = "visible";
+    toggleButton.innerHTML = `<i class="bi bi-eye-slash-fill"></i>`;
+    toggleButton.setAttribute("title", "ir a Modo oculto");
   }
-}
+});
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+refCVU.addEventListener("click", () => {
+  const user = JSON.parse(localStorage.getItem("usuario"));
 
-const controlBtnOcultar = document.getElementById("btnOcultar");
+  document.getElementById("cvu").innerText = user.cvu;
+  document.getElementById("alias").innerText = user.alias;
+  document.getElementById("cuil").innerText = user.cvu;
+  document.getElementById("fondo").style.display = "block";
+  document.getElementById("ventanaFlotante").style.display = "block";
 
-if (controlBtnOcultar) {
-  btnOcultar.addEventListener("click", () => {
-    const saldoElement = document.getElementById("saldo");
-    const toggleButton = document.getElementById("btnOcultar");
+  const cerrarVentanaFlotante = () => {
+    document.getElementById("fondo").style.display = "none";
+    document.getElementById("ventanaFlotante").style.display = "none";
+    document.getElementById(
+      "copiarCVU"
+    ).innerHTML = `<i class="bi bi-clipboard"></i>`;
+    document.getElementById("copiadoNotificacion").style.display = "none";
+  };
 
-    if (
-      saldoElement.style.visibility === "visible" ||
-      saldoElement.style.visibility === ""
-    ) {
-      saldoElement.style.visibility = "hidden";
-      toggleButton.innerHTML = `<i class="bi bi-eye-fill"></i>`;
-      toggleButton.setAttribute("title", "ir a Modo clasico");
-    } else {
-      saldoElement.style.visibility = "visible";
-      toggleButton.innerHTML = `<i class="bi bi-eye-slash-fill"></i>`;
-      toggleButton.setAttribute("title", "ir a Modo oculto");
-    }
+  cerrarvf.addEventListener("click", cerrarVentanaFlotante);
+  fondo.addEventListener("click", cerrarVentanaFlotante);
+
+  copiarCVU.addEventListener("click", () => {
+    copiarAlPortapapeles("cvu");
+    mostrarNotificacion();
   });
-}
+});
 
-const controlRefCVU = document.getElementById("refCVU");
-
-if (controlRefCVU) {
-  refCVU.addEventListener("click", () => {
-    const indice = Math.floor(Math.random() * 10);
-    document.getElementById("cvu").innerText = cvuVector[indice].toString();
-    document.getElementById("alias").innerText = "BARCO.ALPARGATA.PEZ";
-    document.getElementById("cuil").innerText = "11-11111111-1";
-    document.getElementById("fondo").style.display = "block";
-    document.getElementById("ventanaFlotante").style.display = "block";
-
-    const cerrarVentanaFlotante = () => {
-      document.getElementById("fondo").style.display = "none";
-      document.getElementById("ventanaFlotante").style.display = "none";
-      document.getElementById(
-        "copiarCVU"
-      ).innerHTML = `<i class="bi bi-clipboard"></i>`;
-      document.getElementById("copiadoNotificacion").style.display = "none";
-    };
-
-    cerrarvf.addEventListener("click", cerrarVentanaFlotante);
-    fondo.addEventListener("click", cerrarVentanaFlotante);
-
-    copiarCVU.addEventListener("click", () => {
-      copiarAlPortapapeles("cvu");
-      mostrarNotificacion();
-    });
-  });
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-this.imprimirProductosEnHTML(criptos);
+const usuarioLogg = this.chequearUserEnStorage();
+this.refreshValues();

@@ -1,6 +1,34 @@
 /*declaracion de variables*/
 /*declaracion de mixims*/
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap");
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.bg-degrade {
+  height: 0.2rem;
+  background: rgb(189, 189, 189);
+  background: linear-gradient(90deg, #000000 0%, rgb(85, 0, 255) 0%, #1AAE9F 48%, #6558F5 100%);
+  background-size: 300% 100%;
+  animation: gradient 5s ease infinite;
+}
+
+.bg-degrade-iz {
+  height: 0.2rem;
+  background: rgb(189, 189, 189);
+  background: linear-gradient(90deg, #fff 0%, rgb(85, 0, 255) 0%, #6558F5 48%, #1AAE9F 100%);
+  background-size: 300% 100%;
+  animation: gradient 5s ease infinite;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -10,6 +38,13 @@
 
 body {
   background-color: #fff !important;
+  font-family: "IBM Plex Sans", sans-serif !important;
+}
+body .btn-conjunto {
+  color: #000 !important;
+}
+body .btn-conjunto:hover {
+  color: #6558F5 !important;
 }
 
 .logo {
@@ -53,6 +88,30 @@ body {
   animation: gradient 5s ease infinite;
 }
 
+.fondo {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+.notificacion {
+  display: none;
+  position: fixed;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1001;
+}
+
 .menu {
   display: flex;
   align-items: center;
@@ -62,6 +121,9 @@ body {
 }
 .menu .navbar-toggler {
   border: none !important;
+}
+.menu .underfined-tit {
+  width: 18rem;
 }
 .menu .menu-logo {
   display: flex;
@@ -74,28 +136,50 @@ body {
   width: 3rem !important;
   height: 3rem !important;
 }
-.menu .menu-logo .line {
+.menu .menu-logo .line-iz {
+  width: 79% !important;
+  height: 0.25rem !important;
+  margin: 0 3%;
+  background-color: #1aae9f;
+}
+.menu .menu-logo .line-de {
   width: 100% !important;
   height: 0.25rem !important;
   margin: 0 3%;
   background-color: #1aae9f;
 }
-.menu .cvu-icon {
+.menu .cvu-icon,
+.menu .carrito-icon {
   display: flex;
+  background-color: #fff;
   color: #6558f5;
-  margin-right: 1.5rem;
   font-size: x-large;
   font-family: "Plus Jakarta Sans", sans-serif;
   transition: color 0.25s !important;
 }
-.menu .cvu-icon .bi {
+.menu .cvu-icon .bi,
+.menu .carrito-icon .bi {
   margin-right: 0.5rem !important;
 }
-.menu .cvu-icon.active {
+.menu .cvu-icon.active,
+.menu .carrito-icon.active {
   color: #1AAE9F !important;
 }
-.menu .cvu-icon:hover {
+.menu .cvu-icon:hover,
+.menu .carrito-icon:hover {
   color: #1AAE9F !important;
+}
+.menu .carrito-icon {
+  border: none;
+  margin-right: 1.5rem;
+}
+.menu .divisor-vertical {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0;
+  background-color: #1AAE9F;
+  width: 0.3rem !important;
+  height: 3rem !important;
 }
 
 .balance-container {
@@ -108,12 +192,24 @@ body {
 .balance-container .balance .balance-saldo {
   font-size: 3.5rem !important;
 }
-.balance-container .balance .btn-eye .bi-eye-slash-fill {
-  font-size: xx-large !important;
-  color: #6558F5 !important;
+.balance-container .balance .signo-monetario {
+  padding: 0 1rem;
+}
+.balance-container .balance .btn-eye {
+  color: #6558F5;
+  font-size: x-large;
 }
 .balance-container .balance .btn-convert {
   border: 0.1rem #6558F5 solid !important;
+  transition: all 0.4s ease-in step-end;
+}
+.balance-container .balance .btn-convert:hover {
+  border-color: #1AAE9F !important;
+  background-color: #6558F5 !important;
+  color: #fff !important;
+}
+.balance-container .balance .btn-convert:hover .convert-icon {
+  color: #fff !important;
 }
 .balance-container .line {
   width: 90% !important;
@@ -121,12 +217,30 @@ body {
   margin: 0 0.1rem 0 0.5rem !important;
   background-color: #1AAE9F;
 }
-.balance-container .bi {
+.balance-container .convert-icon,
+.balance-container .row-icon {
   width: 2.5% !important;
   height: auto !important;
   margin: 0 2rem 0 0 !important;
   color: #1AAE9F;
   padding: 0 !important;
+}
+.balance-container .ganancia-cant,
+.balance-container .ganancia-title,
+.balance-container .ganacia-porcen {
+  font-size: large !important;
+  margin-bottom: 0 !important;
+}
+.balance-container .ganancia-cant {
+  padding-left: 2.5rem !important;
+}
+.balance-container .ganancia-title {
+  text-align: center;
+}
+.balance-container .ganacia-porcen {
+  color: #1AAE9F;
+  padding-right: 15rem !important;
+  text-align: end;
 }
 
 .prestamos-container {
@@ -176,6 +290,7 @@ body {
   border: 0.25rem #1AAE9F solid !important;
   width: 100% !important;
   height: 35rem !important;
+  padding-right: 0 !important;
 }
 .historial-container .historial-tittle {
   display: inline-block !important;
@@ -197,6 +312,48 @@ body {
   width: 1px !important;
   height: 2.375rem !important;
   background-color: #6558F5;
+}
+.historial-container .historial-renglones .line {
+  margin: 0.5rem 0 0.75rem 0;
+  background-color: #6558F5;
+  width: 100% !important;
+  height: 2px !important;
+}
+.historial-container .historial-renglones .historial {
+  height: 26.5rem;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  width: 100%;
+}
+.historial-container .historial-renglones .historial::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.historial-container .historial-renglones .historial::-webkit-scrollbar-thumb {
+  background-color: #6558F5;
+  border-radius: 1rem;
+}
+.historial-container .historial-renglones .historial::-webkit-scrollbar-thumb:hover {
+  background-color: #1AAE9F;
+}
+.historial-container .historial-renglones .historial-iten {
+  margin-bottom: 0.5rem;
+}
+.historial-container .historial-renglones .historial-iten .historial-text p {
+  margin-bottom: 0;
+}
+.historial-container .historial-renglones .historial-iten .historial-monto p {
+  margin-bottom: 0;
+}
+.historial-container .historial-renglones .historial-iten .monto-ingreso,
+.historial-container .historial-renglones .historial-iten .date-end {
+  text-align: end;
+}
+.historial-container .historial-renglones .historial-iten .monto-ingreso {
+  color: #1AAE9F;
+}
+.historial-container .historial-renglones .historial-iten .monto-retiro {
+  text-align: end;
+  color: #6558F5;
 }
 
 .ventana-flotante {
@@ -246,29 +403,6 @@ body {
   font-weight: bold;
   margin-top: 0.5rem;
 }
-.ventana-flotante .notificacion {
-  display: none;
-  position: fixed;
-  bottom: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 1001;
-}
-
-.fondo {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 999;
-}
 
 .btn-acciones {
   background: #fff;
@@ -306,6 +440,4 @@ body {
 .btn-acciones:hover:before, .btn-acciones:hover:after {
   width: 100%;
   transition: 800ms ease all;
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

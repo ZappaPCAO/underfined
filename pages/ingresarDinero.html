@@ -88,56 +88,38 @@
         <i class="bi bi-cart-fill"></i>
       </button>
     </header>
-    <div class="fondo" id="fondo"></div>
-    <div class="ventana-flotante" id="ventanaFlotante">
-      <h3 class="title">Inormacion de la cuenta</h3>
-      <p class="cvu">CVU: <span id="cvu"></span></p>
-      <p class="alias">Alias: <span id="alias"></span></p>
-      <p class="cuil">CUIL: <span id="cuil"></span></p>
-      <button class="copiar-cvu" title="Copiar CVU" id="copiarCVU">
-        <i class="bi bi-clipboard"></i>
-      </button>
-      <div class="notificacion" id="copiadoNotificacion">
-        CVU copiado al portapapeles
-      </div>
-      <button class="cerar-vf" title="Cerrar" id="cerrarvf">
-        <i class="bi bi-x-lg"></i>
-      </button>
-    </div>
-    <div
-      class="offcanvas offcanvas-end"
-      tabindex="-1"
-      id="offcanvasRight"
-      aria-labelledby="offcanvasRightLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">
-          Carrito Underfined
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body" id="carrito"></div>
-      <div id="acciones-carrito"></div>
-    </div>
-    <main class="container">
-      <section
-        id="listado-criptos"
-        class="row gap-3 p-2 align-content-center justify-content-center"
-      ></section>
-      <div class="notificacion" id="agregadoNotificacion">
-        Agregado al carrito
-      </div>
-    </main>
+    <section class="container p-2 mx-auto my-auto">
+      <h2 class="subtitulo text-start p-2 mx-auto">Ingresar Dinero</h2>
+      <form class="col-6">
+        <div class="mb-3">
+          <label for="inputCvuAlias" class="form-label">CBU o Alias</label>
+          <input
+            class="form-control"
+            id="inputCvuAlias"
+            placeholder="alpargata.pez..."
+          />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">$</span>
+          <input
+            type="text"
+            class="form-control"
+            id="montoIngresar"
+            aria-label="Amount (to the nearest dollar)"
+          />
+        </div>
+        <button type="submit" id="ingresarDinero" class="btn btn-primary">
+          Ingresar dinero
+        </button>
+      </form>
+    </section>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/componentes/usuario.js"></script>
     <script src="../js/entidades/cripto.js"></script>
     <script src="../js/componentes/carrito.js"></script>
     <script src="../js/index.js"></script>

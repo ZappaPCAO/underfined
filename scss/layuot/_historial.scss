@@ -1,6 +1,7 @@
 .historial-container {
   border: 0.25rem $primaryColor solid !important;
   @include sizes(35rem, 100%);
+  padding-right: 0 !important;
 
   .historial-tittle {
     display: inline-block !important;
@@ -21,6 +22,56 @@
     .line-vert {
       @include sizes(2.375rem, 1px);
       background-color: $seccondaryColor;
+    }
+
+    .line {
+      margin: 0.5rem 0 0.75rem 0;
+      background-color: $seccondaryColor;
+      @include sizes(2px, 100%);
+    }
+
+    .historial {
+      height: 26.5rem;
+      scroll-behavior: smooth;
+      overflow-y: auto;
+      width: 100%;
+      &::-webkit-scrollbar {
+        width: 0.5rem;
+        &-thumb {
+          background-color: $seccondaryColor;
+          border-radius: 1rem;
+
+          &:hover {
+            background-color: $primaryColor;
+          }
+        }
+      }
+    }
+
+    .historial-iten {
+      margin-bottom: 0.5rem;
+      .historial-text {
+        p {
+          margin-bottom: 0;
+        }
+      }
+      .historial-monto {
+        p {
+          margin-bottom: 0;
+        }
+      }
+
+      .monto-ingreso,
+      .date-end {
+        text-align: end;
+      }
+      .monto-ingreso {
+        color: $primaryColor;
+      }
+      .monto-retiro {
+        text-align: end;
+        color: $seccondaryColor;
+      }
     }
   }
 }

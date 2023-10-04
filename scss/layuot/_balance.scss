@@ -42,4 +42,21 @@
     color: $primaryColor;
     padding: 0 !important;
   }
+  .ganancia-cant,
+  .ganancia-title,
+  .ganacia-porcen {
+    font-size: large !important;
+    margin-bottom: 0 !important;
+  }
+  .ganancia-cant {
+    padding-left: 2.5rem !important;
+  }
+  .ganancia-title {
+    text-align: center;
+  }
+  .ganacia-porcen {
+    color: $primaryColor;
+    padding-right: 15rem !important;
+    text-align: end;
+  }
 }

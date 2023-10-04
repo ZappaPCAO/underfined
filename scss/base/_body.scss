@@ -1,4 +1,11 @@
 body {
   background-color: #fff !important;
   font-family: "IBM Plex Sans", sans-serif !important;
+
+  .btn-conjunto {
+    color: #000 !important;
+    &:hover {
+      color: $seccondaryColor !important;
+    }
+  }
 }

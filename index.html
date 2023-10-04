@@ -7,7 +7,7 @@
     <link rel="icon" href="./img/icono/underfined.png" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./scss/styles.css" />
 
     <!--BOOSTRAP-->
     <link
@@ -128,7 +128,7 @@
         <div class="col-lg-6 mx-auto p-0">
           <div class="d-inline-flex">
             <b class="signo-monetario balance-saldo" id="signo-monetario">$</b>
-            <b id="saldo" class="balance-saldo mx-auto">999.999,99</b>
+            <b id="saldo" class="balance-saldo mx-auto"></b>
             <button
               class="btn btn-eye col-lg-2 align-self-start"
               id="btnOcultar"
@@ -154,20 +154,26 @@
         <div class="line col-lg-10"></div>
         <i class="row-icon bi bi-caret-right-fill col-lg-2"></i>
       </div>
-      <div class="row ganancia justify-content-between align-items-center">
-        <p class="ganancia-cant col-lg-4">***</p>
-        <h3 class="ganancia-title col-lg-4">Rendimientos proximamente</h3>
-        <h5 class="ganacia-porcen col-lg-4">+20.00%</h5>
-      </div>
+      <a
+        href="./pages/rendimientos.html"
+        class="row ganancia justify-content-center align-items-center btn-conjunto"
+      >
+        <p class="ganancia-cant col-lg-4 p-2" id="rendimientos-generados">
+          <b class="signo-monetario p-2">$</b>
+        </p>
+        <h3 class="ganancia-title col-lg-4 p-2">Rendimientos proximamente</h3>
+        <h5 class="ganacia-porcen col-lg-4 p-2">+20.00%</h5>
+      </a>
     </main>
     <section class="container acciones-container p-2">
       <div class="acciones row justify-content-center align-items-center">
         <div class="col-lg-5 d-flex justify-content-end">
           <button class="btn-acciones" title="Transferir">
-            <img
-              src="./img/Icono/transferir-dinero.png"
-              alt="realizar transferencia icono"
-            />
+            <a href="./pages/realizarTransferencia.html">
+              <img
+                src="./img/Icono/transferir-dinero.png"
+                alt="realizar transferencia icono"
+            /></a>
           </button>
         </div>
         <div class="col-lg-2 d-flex justify-content-center">
@@ -181,15 +187,12 @@
           </button>
         </div>
         <div class="col-lg-5 d-flex justify-content-start">
-          <button
-            class="btn-acciones"
-            onclick="ingresarDinero()"
-            title="Ingresar dinero"
-          >
-            <img
-              src="./img/Icono/ingresar-dinero.png"
-              alt="ingresar dinero icono"
-            />
+          <button class="btn-acciones" title="Ingresar dinero">
+            <a href="./pages/ingresarDinero.html">
+              <img
+                src="./img/Icono/ingresar-dinero.png"
+                alt="ingresar dinero icono"
+            /></a>
           </button>
         </div>
       </div>
@@ -198,24 +201,29 @@
       <div class="row justify-content-center align-items-start">
         <div class="col-lg-6">
           <div class="prestamos-container">
-            <h2 class="prestamos-tittle">Prestamos</h2>
-            <b class="prestamos-saldo">No hay prestamos activos.</b>
-            <div
-              class="row separador justify-content-between align-items-center"
-            >
-              <div class="line col-lg-10"></div>
-              <i class="bi bi-caret-right-fill col-lg-2 p-0"></i>
-            </div>
-            <div class="row justify-content-between align-items-center">
-              <div class="col-lg-6">
-                <b class="signo-monetario">$</b>
-                <b class="prestamos-disponibles"> 99.999,99 </b>
+            <a href="./pages/prestamos.html" class="btn-conjunto">
+              <h2 class="prestamos-tittle">Prestamos</h2>
+              <b class="prestamos-saldo">No hay prestamos activos.</b>
+              <div
+                class="row separador justify-content-between align-items-center"
+              >
+                <div class="line col-lg-10"></div>
+                <i class="bi bi-caret-right-fill col-lg-2 p-0"></i>
               </div>
-              <b class="col-lg-6">Disponibles</b>
-            </div>
+              <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6">
+                  <b class="signo-monetario">$</b>
+                  <b class="prestamos-disponibles"> 99.999,99 </b>
+                </div>
+                <b class="col-lg-6">Disponibles</b>
+              </div>
+            </a>
           </div>
           <div class="reservas-container">
-            <a class="row justify-content-between align-items-center" href="">
+            <a
+              class="row justify-content-between align-items-center btn-conjunto"
+              href=""
+            >
               <h2 class="col-lg-5">Reservas</h2>
               <b class="col-lg-5">No hay reservas activas.</b>
               <i class="col-lg-2 bi bi-caret-right-fill col-lg-2 p-0"></i>
@@ -223,7 +231,7 @@
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="historial-container p-2">
+          <div class="historial-container">
             <h2 class="historial-tittle">Tu actividad</h2>
             <div class="historial-renglones container-fluid">
               <div class="row justify-content-start align-items-center p-2">
@@ -236,25 +244,25 @@
                   placeholder="Actividad a buscar..."
                 />
               </div>
-              <ul>
-                <li>Transacción 1 - $50.00</li>
-                <li>Transacción 2 - $20.00</li>
-                <li>Transacción 3 - $30.00</li>
-              </ul>
+              <div class="line"></div>
+              <div class="container-fluid historial" id="historial"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <script src="./js/entidades/user.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/componentes/carrito.js"></script>
+    <script src="./js/entidades/historialMovimientos.js"></script>
+
+    <!-- Sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Boostrap-->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/entidades/cripto.js"></script>
-    <script src="./js/componentes/carrito.js"></script>
-    <script src="./js/index.js"></script>
-    <!-- Sweet alert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>
