@@ -85,24 +85,7 @@
       >
         <i class="bi bi-cart-fill"></i>
       </button>
-    </header>
-    <div class="fondo" id="fondo"></div>
-    <div class="ventana-flotante" id="ventanaFlotante">
-      <h3 class="title">Inormacion de la cuenta</h3>
-      <p class="cvu">CVU: <span id="cvu"></span></p>
-      <p class="alias">Alias: <span id="alias"></span></p>
-      <p class="cuil">CUIL: <span id="cuil"></span></p>
-      <button class="copiar-cvu" title="Copiar CVU" id="copiarCVU">
-        <i class="bi bi-clipboard"></i>
-      </button>
-      <div class="notificacion" id="copiadoNotificacion">
-        CVU copiado al portapapeles
-      </div>
-      <button class="cerar-vf" title="Cerrar" id="cerrarvf">
-        <i class="bi bi-x-lg"></i>
-      </button>
-    </div>
-    <div
+      <div
       class="offcanvas offcanvas-end"
       tabindex="-1"
       id="offcanvasRight"
@@ -122,6 +105,24 @@
       <div class="offcanvas-body" id="carrito"></div>
       <div id="acciones-carrito"></div>
     </div>
+    </header>
+    <div class="fondo" id="fondo"></div>
+    <div class="ventana-flotante" id="ventanaFlotante">
+      <h3 class="title">Inormacion de la cuenta</h3>
+      <p class="cvu">CVU: <span id="cvu"></span></p>
+      <p class="alias">Alias: <span id="alias"></span></p>
+      <p class="cuil">CUIL: <span id="cuil"></span></p>
+      <button class="copiar-cvu" title="Copiar CVU" id="copiarCVU">
+        <i class="bi bi-clipboard"></i>
+      </button>
+      <div class="notificacion" id="copiadoNotificacion">
+        CVU copiado al portapapeles
+      </div>
+      <button class="cerar-vf" title="Cerrar" id="cerrarvf">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    
     <main class="container balance-container p-2 mx-auto">
       <div class="row balance justify-content-between align-items-center">
         <h2 class="balance-tittle col-lg-1 align-self-start">Saldo</h2>
@@ -251,11 +252,12 @@
         </div>
       </div>
     </section>
+    
+    <script src="./js/entidades/cripto.js"></script>
+    <script src="./js/componentes/carrito.js"></script>
     <script src="./js/entidades/user.js"></script>
     <script src="./js/index.js"></script>
-    <script src="./js/componentes/carrito.js"></script>
     <script src="./js/entidades/historialMovimientos.js"></script>
-
     <!-- Sweet alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--Boostrap-->

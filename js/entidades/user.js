@@ -6,17 +6,21 @@ class Usuario {
     this.email = usuario.email;
     this.nombreUsuario = usuario.nombreUsuario;
     this.clave = usuario.clave;
-    this.monto = 0;
-    this.cvu = Math.floor(Math.random() * 10000000000000000).toString();
-    this.alias = "pescado.sarten.pera";
-    this.cuil = "23-40546987-2";
+    this.monto = usuario.monto;
+    this.cvu = usuario.cvu;
+    this.alias = usuario.alias;
+    this.cuil = usuario.cuil;
   }
 
   updateMonto(saldo, condicion) {
+    let montoAux = parseFloat(this.monto);
+    let saldoAux = parseFloat(saldo);
+
     if (condicion)
-      // true -> va a cargar plata
-      this.monto += saldo;
-    else if (saldo <= this.monto) this.monto -= saldo;
+      montoAux += saldoAux;
+    else if (saldoAux <= montoAux) montoAux -= saldoAux;
+
+    this.monto = montoAux;
   }
 }
 
@@ -28,13 +32,9 @@ const usuarios = [
     email: "john@example.com",
     nombreUsuario: "johndoe",
     clave: "password123",
-  }),
-  new Usuario({
-    id: 2,
-    nombre: "Franco",
-    apellido: "Dreher",
-    email: "none",
-    nombreUsuario: "dreher23",
-    clave: "dreher23",
+    monto: 0,
+    cvu:  Math.floor(Math.random() * 10000000000000000).toString(),
+    alias: "pescado.sarten.pera",
+    cuil: "23-40546987-2",
   }),
 ];
