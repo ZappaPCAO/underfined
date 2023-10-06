@@ -76,6 +76,22 @@
         <i class="bi bi-person-bounding-box"></i>
         <b>CVU</b>
       </a>
+      <div class="fondo" id="fondo"></div>
+      <div class="ventana-flotante" id="ventanaFlotante">
+        <h3 class="title">Inormacion de la cuenta</h3>
+        <p class="cvu">CVU: <span id="cvu"></span></p>
+        <p class="alias">Alias: <span id="alias"></span></p>
+        <p class="cuil">CUIL: <span id="cuil"></span></p>
+        <button class="copiar-cvu" title="Copiar CVU" id="copiarCVU">
+          <i class="bi bi-clipboard"></i>
+        </button>
+        <div class="notificacion" id="copiadoNotificacion">
+          CVU copiado al portapapeles
+        </div>
+        <button class="cerar-vf" title="Cerrar" id="cerrarvf">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
       <div class="divisor-vertical"></div>
       <button
         title="Ver carrito"
@@ -87,43 +103,27 @@
       >
         <i class="bi bi-cart-fill"></i>
       </button>
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasRightLabel">
+            Carrito Underfined
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body" id="carrito"></div>
+        <div id="acciones-carrito"></div>
+      </div>
     </header>
-    <div class="fondo" id="fondo"></div>
-    <div class="ventana-flotante" id="ventanaFlotante">
-      <h3 class="title">Inormacion de la cuenta</h3>
-      <p class="cvu">CVU: <span id="cvu"></span></p>
-      <p class="alias">Alias: <span id="alias"></span></p>
-      <p class="cuil">CUIL: <span id="cuil"></span></p>
-      <button class="copiar-cvu" title="Copiar CVU" id="copiarCVU">
-        <i class="bi bi-clipboard"></i>
-      </button>
-      <div class="notificacion" id="copiadoNotificacion">
-        CVU copiado al portapapeles
-      </div>
-      <button class="cerar-vf" title="Cerrar" id="cerrarvf">
-        <i class="bi bi-x-lg"></i>
-      </button>
-    </div>
-    <div
-      class="offcanvas offcanvas-end"
-      tabindex="-1"
-      id="offcanvasRight"
-      aria-labelledby="offcanvasRightLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">
-          Carrito Underfined
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body" id="carrito"></div>
-      <div id="acciones-carrito"></div>
-    </div>
     <main class="container">
       <section
         id="listado-criptos"
@@ -133,15 +133,21 @@
         Agregado al carrito
       </div>
     </main>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+
     <script src="../js/entidades/cripto.js"></script>
+    <script src="../js/tools/utiles.js"></script>
     <script src="../js/componentes/carrito.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/componentes/hedader.js"></script>
+
+    <script src="../js/componentes/listadoCriptos.js"></script>
+
     <!-- Sweet alert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

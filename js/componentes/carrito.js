@@ -32,9 +32,8 @@ function agregarAlCarrito(idCripto) {
     );
   }
 
-  this.mostrarNotificacionCart();
+  this.mostrarNotificacion("agregadoNotificacion");
 
-  // Actualizamos el storage y el contenido de la tabla
   localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
   imprimirTabla(carrito);
 }
@@ -51,7 +50,7 @@ function eliminarDelCarrito(idCripto) {
     carrito.splice(index, 1);
   }
 
-  swal("Producto eliminado con éxito", "", "success");
+  Swal.fire("Producto eliminado con éxito", "", "success");
 
   localStorage.setItem("carritoEnStorage", JSON.stringify(carrito));
   imprimirTabla(carrito);

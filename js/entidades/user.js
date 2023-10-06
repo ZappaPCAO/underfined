@@ -16,8 +16,7 @@ class Usuario {
     let montoAux = parseFloat(this.monto);
     let saldoAux = parseFloat(saldo);
 
-    if (condicion)
-      montoAux += saldoAux;
+    if (condicion) montoAux += saldoAux;
     else if (saldoAux <= montoAux) montoAux -= saldoAux;
 
     this.monto = montoAux;
@@ -33,7 +32,7 @@ const usuarios = [
     nombreUsuario: "johndoe",
     clave: "password123",
     monto: 0,
-    cvu:  Math.floor(Math.random() * 10000000000000000).toString(),
+    cvu: Math.floor(Math.random() * 10000000000000000).toString(),
     alias: "pescado.sarten.pera",
     cuil: "23-40546987-2",
   }),
