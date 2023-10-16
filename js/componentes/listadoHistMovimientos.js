@@ -6,12 +6,17 @@ function getIngreso(tipoTransaccion) {
   );
 }
 
-function getDiasTranscurridos(fechaEsp) {
-  const fechaActual = new Date();
-  const diferenciaFechas = fechaActual - fechaEsp;
-  const diasTranscurridos = diferenciaFechas / 86400000;
+function chequearHistEnStorage() {
+  let contenidoEnStorage = JSON.parse(localStorage.getItem("usuario"));
+  let array = [];
 
-  return diasTranscurridos;
+  if (contenidoEnStorage) {
+    for (const objeto of contenidoEnStorage.hist) {
+      let iten = new Historial(objeto);
+      array.push(iten);
+    }
+  }
+  return array;
 }
 
 function getDiaSemana(movimiento) {
@@ -19,19 +24,18 @@ function getDiaSemana(movimiento) {
 
   const objAnt = historialMovimientos[indice > 0 ? indice - 1 : indice];
 
-  const diasTranscurridosAnt = getDiasTranscurridos(objAnt.date);
-  const diasTranscurridos = getDiasTranscurridos(movimiento.date);
+  let fechaAnt = objAnt.date;
+  let fecha = movimiento.date;
 
-  if (diasTranscurridos <= 1)
-    return movimiento.date.getHours() + ":" + movimiento.date.getMinutes();
+  if (moment().diff(fecha, "day") <= 1) return moment(fecha).format("hh:mm");
 
-  if (diasTranscurridos <= 7) {
-    if (diasTranscurridosAnt <= 1) insertLine();
-    return diasSemana[movimiento.date.getDay()];
+  if (moment().diff(fecha, "day") <= 7) {
+    if (moment().diff(fechaAnt, "day") <= 1) insertLine();
+    return moment(fecha).format("dddd");
   }
 
-  if (diasTranscurridosAnt <= 7) insertLine();
-  return movimiento.date.toLocaleDateString();
+  if (moment().diff(fechaAnt, "day") <= 7) insertLine();
+  return moment(fecha).format("L");
 }
 
 function insertLine() {
@@ -76,6 +80,6 @@ function imprimirHistorialEnHTML() {
 const historialMovimientos = chequearHistEnStorage();
 
 //Ordeno el arreglo, para q los mas recientes queden primeros.
-historialMovimientos.sort((a, b) => b.date - a.date);
+historialMovimientos.sort((a, b) => b.id - a.id);
 
 this.imprimirHistorialEnHTML();

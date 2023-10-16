@@ -29,3 +29,8 @@ refCVU.addEventListener("click", () => {
     });
   });
 });
+
+cerrarSesion.addEventListener("click", () => {
+  localStorage.removeItem("usuario");
+  window.location.href = "../../pages/login.html"
+})

@@ -1,3 +1,5 @@
+moment.locale("es");
+
 function copiarAlPortapapeles(id_elemento) {
   return new Promise((resolve) => {
     var aux = document.createElement("textarea");
@@ -11,29 +13,20 @@ function copiarAlPortapapeles(id_elemento) {
   });
 }
 
-function setearItenHistorial(cantidad, tipo) {
+function setearItenHistorial(cantidad, tipo, usuario, id_hasta) {
+  const id = usuario.hist.length >= 1 ? (usuario.hist[(usuario.hist.length) - 1].id) + 1 : 1;
+
   let iten = new Historial({
-    id: 1,
+    id: id,
     tipoTransaccion: tipo,
     cantidad: formatoArgentinoMonetario(cantidad),
+    date:  moment((new Date()).toLocaleString(), "L, LTS"),
+    idUsuario: id_hasta,
   });
 
-  historial.push(iten);
+  console.log(iten)
 
-  localStorage.setItem("historial", JSON.stringify(historial));
-}
-
-function chequearHistEnStorage() {
-  let contenidoEnStorage = JSON.parse(localStorage.getItem("historial"));
-  let array = [];
-
-  if (contenidoEnStorage) {
-    for (const objeto of contenidoEnStorage) {
-      let iten = new Historial(objeto);
-      array.push(iten);
-    }
-  }
-  return array;
+  usuario.setearTransaccion(iten);
 }
 
 function mostrarNotificacion(id) {

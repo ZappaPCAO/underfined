@@ -7,7 +7,7 @@
     <link rel="icon" href="./img/icono/underfined.png" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="./scss/styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
 
     <!--BOOSTRAP-->
     <link
@@ -121,6 +121,16 @@
         <div class="offcanvas-body" id="carrito"></div>
         <div id="acciones-carrito"></div>
       </div>
+      <div class="divisor-vertical"></div>
+      <button
+        title="Cerrar sesion"
+        class="carrito-icon"
+        type="button" 
+        id="cerrarSesion"       
+      >
+      <i class="bi bi-escape"></i>
+      </button>
+
     </header>
     <main class="container balance-container p-2 mx-auto">
       <div class="row balance justify-content-between align-items-center">
@@ -252,6 +262,12 @@
       </div>
     </section>
 
+    <!--Moments-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- Moments-ES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.js"></script>
+    
+    <script src="./js/tools/userLogin.js"> </script>
     <script src="./js/entidades/user.js"></script>
     <script src="./js/entidades/cripto.js"></script>
     <script src="./js/entidades/historialMovimientos.js"></script>

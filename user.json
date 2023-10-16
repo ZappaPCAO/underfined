@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "email": "juan@example.com",
+    "nombreUsuario": "juanperez",
+    "clave": "juanperez",
+    "monto": 1000,
+    "cvu": "546968714321",
+    "alias": "alpargata.pez.tronco",
+    "cuil": "20345678901"
+  },
+  {
+    "id": 2,
+    "nombre": "María",
+    "apellido": "Gómez",
+    "email": "maria@example.com",
+    "nombreUsuario": "mariagomez",
+    "clave": "mariagomez",
+    "monto": 1500,
+    "cvu": "546987654321",
+    "alias": "mojarra.aro.perno",
+    "cuil": "20345678902"
+  },
+  {
+    "id": 3,
+    "nombre": "Luis",
+    "apellido": "Martínez",
+    "email": "luis@example.com",
+    "nombreUsuario": "luismartinez",
+    "clave": "luismartinez",
+    "monto": 2000,
+    "cvu": "915456789012",
+    "alias": "ladra.que.perro",
+    "cuil": "20345678903"
+  },
+  {
+    "id": 4,
+    "nombre": "Ana",
+    "apellido": "Sánchez",
+    "email": "ana@example.com",
+    "nombreUsuario": "anasanchez",
+    "clave": "anasanchez",
+    "monto": 2500,
+    "cvu": "229789012345",
+    "alias": "hoja.tirano.rex",
+    "cuil": "20345678904"
+  },
+  {
+    "id": 5,
+    "nombre": "Carlos",
+    "apellido": "García",
+    "email": "carlos@example.com",
+    "nombreUsuario": "carlosgarcia",
+    "clave": "contraseña5",
+    "monto": 3000,
+    "cvu": "441012345678",
+    "alias": "asado.fernet.tabla",
+    "cuil": "20345678905"
+  },
+  {
+    "id": 6,
+    "nombre": "Prueba",
+    "apellido": "Prueba",
+    "email": "prueba@example.com",
+    "nombreUsuario": "prueba",
+    "clave": "prueba",
+    "monto": 3000,
+    "cvu": "441983345678",
+    "alias": "prueba.prueba.prueba",
+    "cuil": "20343478905"
+  }
+]

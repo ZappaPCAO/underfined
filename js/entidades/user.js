@@ -1,5 +1,5 @@
 class Usuario {
-  constructor(usuario) {
+  constructor(usuario, hist = []) {
     this.id = usuario.id;
     this.nombre = usuario.nombre;
     this.apellido = usuario.apellido;
@@ -10,30 +10,40 @@ class Usuario {
     this.cvu = usuario.cvu;
     this.alias = usuario.alias;
     this.cuil = usuario.cuil;
+    this.hist = hist;
   }
 
-  updateMonto(saldo, condicion) {
-    let montoAux = parseFloat(this.monto);
-    let saldoAux = parseFloat(saldo);
 
-    if (condicion) montoAux += saldoAux;
-    else if (saldoAux <= montoAux) montoAux -= saldoAux;
+  setearTransaccion(historial) {
+    this.hist.push(historial);
+  }
 
-    this.monto = montoAux;
+  updateMonto(saldo, condicion, usuario) {
+    //condicion =TRUE => Transferencia ;; =FALSE => Ingreso de dinero
+    const montoAux = parseFloat(this.monto);
+    const usuarioMontoAux = parseFloat(usuario.monto);
+    const saldoAux = parseFloat(saldo);
+
+    return new Promise((resolve, reject) => {
+      if (condicion) {
+        if (saldoAux <= montoAux) {
+          this.monto = montoAux - saldoAux;
+          usuario.monto = usuarioMontoAux + saldoAux;
+          resolve("Éxito");
+        } else {
+          reject("Fondos insuficientes para realizar la transacción.");
+        }
+      } else {
+        if (saldoAux <= usuarioMontoAux) {
+          this.monto = montoAux + saldoAux;
+          usuario.monto = usuarioMontoAux - saldoAux;
+          resolve("Éxito");
+        } else {
+          reject("Fondos insuficientes para realizar la transacción.");
+        }
+      }
+    });
   }
 }
 
-const usuarios = [
-  new Usuario({
-    id: 1,
-    nombre: "John",
-    apellido: "Doe",
-    email: "john@example.com",
-    nombreUsuario: "johndoe",
-    clave: "password123",
-    monto: 0,
-    cvu: Math.floor(Math.random() * 10000000000000000).toString(),
-    alias: "pescado.sarten.pera",
-    cuil: "23-40546987-2",
-  }),
-];
+

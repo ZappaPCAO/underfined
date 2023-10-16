@@ -5,6 +5,7 @@ function chequearUserEnStorage() {
   return user;
 }
 
+
 function refreshValues() {
   const saldo = document.getElementById("saldo");
 
@@ -56,6 +57,7 @@ btnOcultar.addEventListener("click", () => {
     toggleButton.setAttribute("title", "ir a Modo oculto");
   }
 });
-
+//////////////////////////////////////////////
 const usuarioLogg = this.chequearUserEnStorage();
+
 this.refreshValues();

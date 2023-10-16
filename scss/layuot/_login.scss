@@ -1,0 +1,27 @@
+.card {
+  width: 400px;
+  border: none;
+
+  .btn-login {
+    color: #fff !important;
+    background-color: $primaryColor !important;
+    border-color: $seccondaryColor !important;
+    transition: all 0.3s linear;
+
+    &:hover {
+      background-color: $seccondaryColor !important;
+      border-color: $primaryColor !important;
+    }
+  }
+}
+
+.form input {
+  margin-bottom: 12px;
+}
+.form input:focus {
+  box-shadow: none;
+}
+
+.form button {
+  margin-top: 20px;
+}

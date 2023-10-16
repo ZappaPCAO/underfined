@@ -7,7 +7,7 @@
     <link rel="icon" href="../img/Icono/underfined.png" />
 
     <!--CSS-->
-    <link rel="stylesheet" href="../scss/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
 
     <!--BOOSTRAP-->
     <link
@@ -115,7 +115,7 @@
           <label for="inputCvuAlias" class="form-label">CBU o Alias</label>
           <input
             class="form-control"
-            id="inputCvuAlias"
+            id="ingresoCvuAlias"
             placeholder="alpargata.pez..."
           />
         </div>
@@ -123,25 +123,32 @@
           <span class="input-group-text">$</span>
           <input type="text" class="form-control" id="montoIngresar" />
         </div>
-        <button type="submit" id="ingresarDinero">Ingresar dinero</button>
+        <button type="submit" id="ingresarDinero" class="btn btn-primary">Realizar ingreso</button>
       </form>
     </section>
 
-    <script src="../js/entidades/cripto.js"></script>
-    <script src="../js/entidades/user.js"></script>
-    <script src="../js/entidades/historialMovimientos.js"></script>
-    <script src="../js/tools/utiles.js"></script>
-    <script src="../js/componentes/hedader.js"></script>
-    <script src="../js/componentes/carrito.js"></script>
-    <script src="../js/componentes/enviarDinero.js"></script>
+<!--Moments-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<!-- Moments-ES -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/es.js"></script>
 
-    <!-- Sweet alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../js/entidades/cripto.js"></script>
+<script src="../js/entidades/user.js"></script>
+<script src="../js/entidades/historialMovimientos.js"></script>
+<script src="../js/tools/utiles.js"></script>
+<script src="../js/componentes/hedader.js"></script>
+<script src="../js/componentes/carrito.js"></script>
+<script src="../js/componentes/enviarDinero.js"></script>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"
-    ></script>
+<!-- Sweet alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+  crossorigin="anonymous"
+></script>
+
+
   </body>
 </html>
